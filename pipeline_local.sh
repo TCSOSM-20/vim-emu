@@ -30,7 +30,7 @@
 set -e
 # trigger pep8 style check
 echo "Doing flake8 style check ..."
-flake8 --exclude=.eggs,build,devops,examples/charms --ignore=E501,W605,W504 .
+flake8 --exclude=.eggs,build,devops,examples/charms --ignore=E501,W605,W504,E741,F523 .
 echo "done."
 # trigger the tests
 echo "Running unit tests ..."
@@ -39,5 +39,5 @@ sudo pytest -v
 docker build -t vim-emu-loc-test .
 docker run --rm --privileged --pid='host' -v /var/run/docker.sock:/var/run/docker.sock vim-emu-loc-test pip3 list
 docker run --rm --privileged --pid='host' -v /var/run/docker.sock:/var/run/docker.sock vim-emu-loc-test pytest -v
-docker run --rm --privileged --pid='host' -v /var/run/docker.sock:/var/run/docker.sock vim-emu-loc-test flake8 --exclude=.eggs,devopsi,build,examples/charms --ignore=E501,W605,W504 .
+docker run --rm --privileged --pid='host' -v /var/run/docker.sock:/var/run/docker.sock vim-emu-loc-test flake8 --exclude=.eggs,devopsi,build,examples/charms --ignore=E501,W605,W504,E741,F523 .
 echo "done."
